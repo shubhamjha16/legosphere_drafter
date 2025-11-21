@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String?
+  password  String   // Hashed password
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Usage Tracking
+  totalWords    Int @default(100000) // Default plan
+  usedWords     Int @default(0)
+  
+  documents Document[]
+  usageLogs UsageLog[]
+}
+
+model Document {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String   @db.Text
+  type      String   // DRAFT, MEMO, ARGUMENT, RESEARCH
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
+
+model UsageLog {
+  id        Int      @id @default(autoincrement())
+  feature   String   // e.g., "drafting", "research"
+  wordsUsed Int
+  timestamp DateTime @default(now())
+  
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+}
