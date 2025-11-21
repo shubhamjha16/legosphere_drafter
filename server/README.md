@@ -29,7 +29,7 @@ Edit the `.env` file with your actual credentials:
 
 ```env
 # Gemini AI API Key
-GEMINI_API_KEY=AIzaSyD8y_3x8-DfxlhCkFBq9JxIcHpig3fl3Vo
+GEMINI_API_KEY=your_actual_gemini_api_key_here
 
 # Database Configuration
 DATABASE_URL=postgresql://postgres:[YOUR-PASSWORD]@db.[PROJECT-REF].supabase.co:5432/postgres

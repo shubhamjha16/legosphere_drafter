@@ -119,7 +119,7 @@ fi
 # Check DATABASE_URL
 echo -n "✓ Checking DATABASE_URL... "
 if grep -q "DATABASE_URL=postgresql://" server/.env; then
-    if grep -q "\[YOUR-PASSWORD\]" server/.env || grep -q "\[PASSWORD\]" server/.env; then
+    if grep -q "\[YOUR-PASSWORD\]" server/.env || grep -q "\[PASSWORD\]" server/.env || grep -q "YOUR_PASSWORD" server/.env; then
         echo -e "${YELLOW}PLACEHOLDER${NC}"
         echo "  DATABASE_URL contains placeholder. Replace with actual password."
     else

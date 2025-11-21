@@ -41,7 +41,7 @@ Both should show a key starting with `AIza` and approximately 39 characters long
 
 The API key should look like:
 ```
-AIzaSyD8y_3x8-DfxlhCkFBq9JxIcHpig3fl3Vo
+AIzaSyXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX (example format)
 ```
 
 Common mistakes:
@@ -246,11 +246,10 @@ DATABASE_URL=postgresql://postgres.PROJECT_REF:PASSWORD@aws-0-REGION.pooler.supa
 
 The password in the URL should be URL-encoded if it contains special characters.
 
-For password `Jhunjhun@1605`:
+Example with special characters in password:
 - `@` should be encoded as `%40`
-- URL: `...postgres.xxx:Jhunjhun%401605@aws-...`
-
-Or use the password without encoding if connection pooler supports it.
+- `#` should be encoded as `%23`
+- Example: `...postgres.xxx:MyPass%40word@aws-...`
 
 #### Step 3: Get Correct Connection String
 
